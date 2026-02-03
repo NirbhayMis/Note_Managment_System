@@ -88,6 +88,13 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- ✅ H2 In-Memory Database (for Render / demo deploy) -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
 
 		<!-- ✅ VALIDATION -->
 		<dependency>
