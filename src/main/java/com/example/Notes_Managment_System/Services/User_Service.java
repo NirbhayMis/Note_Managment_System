@@ -188,6 +188,7 @@ public class User_Service {
         }
 
         note.setDeleted(true);
+        note.setDeletedAt(LocalDateTime.now());
         noteRepository.save(note);
     }
 

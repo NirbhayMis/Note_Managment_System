@@ -4,6 +4,7 @@ import com.example.Notes_Managment_System.Model.Note;
 import com.example.Notes_Managment_System.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ public interface NoteRepository extends JpaRepository<Note, Long> {
 
     List<Note> findByPublicNoteTrue();
     Optional<Note> findByIdAndDeletedTrue(Long id);
+    List<Note> findByDeletedTrueAndDeletedAtBefore(LocalDateTime date);
 
 
     //  NEW (SOFT DELETE SUPPORT)

@@ -29,10 +29,9 @@ import java.util.List;
 
     private Boolean paidNote;
     private double price;
-
+    private LocalDateTime deletedAt;
     @Enumerated(EnumType.STRING)
     private Role uploadedByRole; // USER / ADMIN
-
     private Long uploadedById;
     private LocalDateTime uploatedDateTime;
     private LocalDateTime updatedDateTime;
