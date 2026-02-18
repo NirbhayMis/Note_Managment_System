@@ -33,9 +33,6 @@ public class NoteController {
     public ResponseEntity<ApiResponse<NoteResponseDto>> createNote(
             @RequestBody NoteRequestDto request) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("AUTH NAME = " + auth.getName());
-        System.out.println("AUTHORITIES = " + auth.getAuthorities());
 
         NoteResponseDto dto = userService.createNote(request);
 

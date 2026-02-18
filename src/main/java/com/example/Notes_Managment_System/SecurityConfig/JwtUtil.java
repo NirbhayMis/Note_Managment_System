@@ -37,21 +37,21 @@ public class JwtUtil {
         Date expiryDate = new Date(now.getTime() + expireMillis);
 
         return Jwts.builder()
-                .setSubject(email)          // ❌ subject() → ✅ setSubject()
+                .setSubject(email)
                 .claim("role", role)
-                .setIssuedAt(now)           // ❌ issuedAt() → ✅ setIssuedAt()
-                .setExpiration(expiryDate) // ❌ expiration() → ✅ setExpiration()
-                .signWith(key)              // key already HS256
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
+                .signWith(key)
                 .compact();
     }
 
     // ✅ COMMON METHOD – parse claims (NEW API)
     private Claims getAllClaims(String token) {
-        return Jwts.parserBuilder()         // ❌ parser() → ✅ parserBuilder()
+        return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
-                .getBody();                 // ❌ getPayload() → ✅ getBody()
+                .getBody();
     }
 
     // ✅ EXTRACT EMAIL

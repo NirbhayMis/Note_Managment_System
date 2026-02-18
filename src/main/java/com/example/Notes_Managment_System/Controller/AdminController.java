@@ -35,7 +35,7 @@ public class AdminController {
         return ResponseEntity.ok(
                 new ApiResponse<>(200, true,
                         "All users fetched",
-                        userRepository.findAll(),null)
+                        userRepository.findAll(), null)
         );
     }
 
@@ -45,15 +45,15 @@ public class AdminController {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "userId","USER_NOT_FOUND",
-                        "User not found","Invalid user id"
+                        "userId", "USER_NOT_FOUND",
+                        "User not found", "Invalid user id"
                 ));
 
         user.setActive(false);
         userRepository.save(user);
 
         return ResponseEntity.ok(
-                new ApiResponse<>(200,true,"User blocked",null,null)
+                new ApiResponse<>(200, true, "User blocked", null, null)
         );
     }
 
@@ -64,15 +64,15 @@ public class AdminController {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "userId","USER_NOT_FOUND",
-                        "User not found","Invalid user id"
+                        "userId", "USER_NOT_FOUND",
+                        "User not found", "Invalid user id"
                 ));
 
         user.setActive(true);
         userRepository.save(user);
 
         return ResponseEntity.ok(
-                new ApiResponse<>(200,true,"User unblocked",null,null)
+                new ApiResponse<>(200, true, "User unblocked", null, null)
         );
     }
 
@@ -92,6 +92,7 @@ public class AdminController {
                         dto, null)
         );
     }
+
     @PostMapping("/users/{userId}/note")
     public ResponseEntity<ApiResponse<NoteResponseDto>> createNoteForUser(
             @PathVariable Long userId,
@@ -156,12 +157,13 @@ public class AdminController {
     public ResponseEntity<ApiResponse<List<NoteResponseDto>>> publicNotes() {
 
         return ResponseEntity.ok(
-                new ApiResponse<>(200,true,
+                new ApiResponse<>(200, true,
                         "all users notes fetched",
 
-                        adminServices.getPublicNotes(),null)
+                        adminServices.getPublicNotes(), null)
         );
     }
+
     @PutMapping("/restore-note/{noteId}")
     public ResponseEntity<ApiResponse<NoteResponseDto>> restoreNote(
             @PathVariable Long noteId
@@ -180,20 +182,4 @@ public class AdminController {
                 )
         );
     }
-//    @PostMapping("/note")
-//    public ResponseEntity<ApiResponse<NoteResponseDto>> createAdminNote(
-//            @RequestPart NoteRequestDto request,
-//            @RequestPart(required = false) MultipartFile file
-//    ) {
-//
-//        NoteResponseDto dto =
-//                adminServices.createOrUpdateAdminNote(request, file);
-//
-//        return ResponseEntity.ok(
-//                new ApiResponse<>(200, true,
-//                        "Admin note created",
-//                        dto,
-//                        null)
-//        );
-//    }
 }
